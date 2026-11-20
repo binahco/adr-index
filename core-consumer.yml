@@ -1,0 +1,23 @@
+# Manifest del consumidor. Contrato e inventario a la vez (ARCHITECTURE.md §2.1).
+week: 20
+name: adr-index
+core_version: 1.2.0
+
+reused_modules:
+  - llm-client
+  - schema-validate
+  - secure-base
+  - test-kit
+  - cache-ratelimit
+  - parser-io
+
+new_surface:
+  - "índice léxico determinista sobre ADRs/runbooks/ARCHITECTURE con ranking por sección (parser-io)"
+  - "citas verificadas: la respuesta LLM solo pasa si cada (archivo, sección) citado existe en el índice"
+  - "la pregunta entra saneada y el contexto se congela en el dataset — el replay no caduca cuando los docs cambian"
+  - "ranking por palabras clave documentado como léxico: lo semántico es vector-core (C11, issue #2)"
+
+estimated_new_surface: 25
+
+# Presupuesto máximo de evals en USD por semana (ARCHITECTURE.md §8.1).
+eval_budget_usd: 2.0
